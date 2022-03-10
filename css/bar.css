@@ -1,0 +1,132 @@
+.sponsor-padding {
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.row {
+    display: flex;
+    -ms-flex-wrap: wrap;
+    margin-right: -15px;
+    margin-left: -15px;
+}
+
+.sponsors-logo {
+    min-height: 125px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -ms-flex-line-pack: center;
+    align-content: center;
+}
+
+.sponsors-logo img {
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+
+.img-fluid {
+    max-width: 100%;
+    height: auto;
+}
+
+img {
+    vertical-align: middle;
+    border-style: none;
+}
+
+.sponsors-logo:hover img {
+    -webkit-filter: none;
+    filter: none; 
+}
+
+  
+      .item-hints .hint {
+        position: relative;
+        justify-content: center;
+        align-items: center;
+      }
+
+    
+      .item-hints .hint-content {
+        color: black;
+        width: 300px;
+        position: absolute;
+        z-index: 5;
+        padding: 12px 0;
+        opacity: 0;
+        visibility: hidden;
+        -webkit-transition: opacity 0.7s ease, visibility 0.7s ease;
+        transition: opacity 0.7s ease, visibility 0.7s ease;
+        pointer-events: none;
+        color: black;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .item-hints .hint:hover .hint-content {
+        color: black;
+        width: 300px;
+        position: absolute;
+        z-index: 5;
+        padding: 12px 0;
+        opacity: 1;
+        visibility: visible !important;
+        -webkit-transition: opacity 0.7s ease, visibility 0.7s ease;
+        transition: opacity 0.7s ease, visibility 0.7s ease;
+        pointer-events: none;
+        color: black;
+        visibility: hidden;
+        pointer-events: none;
+      }
+      .item-hints .hint-content::before {
+        width: 0px;
+        bottom: 0;
+        left: 0;
+        content: "";
+        background-color: black;
+        height: 1px;
+        position: absolute;
+        transition: width 0.4s;
+      }
+      .item-hints .hint:hover .hint-content::before {
+        width: 180px;
+        transition: width 0.4s;
+      }
+      .item-hints .hint-content::after {
+        -webkit-transform-origin: 0 50%;
+        transform-origin: 0 50%;
+        -webkit-transform: rotate(-225deg);
+        transform: rotate(-225deg);
+        bottom: 0;
+        left: 0;
+        width: 80px;
+        content: "";
+        background-color: black;
+        height: 1px;
+        position: absolute;
+        opacity: 1;
+        -webkit-transition: opacity 0.5s ease;
+        transition: opacity 0.5s ease;
+        transition-delay: 0s;
+        -webkit-transition-delay: 0s;
+        transition-delay: 0s;
+      }
+      .item-hints .hint:hover .hint-content::after {
+        opacity: 1;
+        visibility: visible;
+      }
+      .item-hints .hint[data-position="4"] .hint-content {
+        bottom: 120px;
+        left: 50%;
+        margin-left: 56px;
+      }
+      
