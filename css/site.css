@@ -39,17 +39,172 @@ html {
   /* Safari 6.0 - 9.0 */
   filter: grayscale(100%); }
 
+/* FIX chevauchement avatar : l'ancien theme imposait margin-bottom -80px qui cassait le layout */
+.avatar, .avatar-new { margin-bottom: 0 !important; margin-top: 0 !important; }
+.cover { overflow: hidden; border-radius: 16px !important; }
+/* Neutralise l'avatar.png en fond pose par main.css (uniquement pour le header du CV) */
+.cover-bg:not(.cover-bg-new) { background-image: none !important; background-color: #4A89DC; }
+.topbar { background: #fff; border-bottom: 1px solid #eef2f7; }
+
+.cover-bg-new {
+  /* Fallback opaque obligatoire : le texte du header est blanc */
+  background-color: #1a365d !important;
+  /* Le degrade annule aussi le background-image: url(images/avatar.png) de main.css */
+  background-image: linear-gradient(120deg, #1a365d 0%, #2b6cb0 55%, #4A89DC 100%) !important;
+  border-radius: 16px 16px 0 0 !important;
+  padding: 2rem !important;
+  position: relative;
+  overflow: hidden;
+  color: #fff !important;
+}
+.cover-bg-new .hero-name, .cover-bg-new .hero-role,
+.cover-bg-new .hero-contact, .cover-bg-new .hero-contact span,
+.cover-bg-new .hero-status {
+  color: #fff !important;
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: none !important;
+}
+.cover-bg-new [data-aos] { opacity: 1 !important; visibility: visible !important; transform: none !important; }
+.cover-bg-new .hero-contact a { color: #fff !important; text-decoration: underline; }
+.cover-bg-new .hero-role { opacity: 1; }
+.cover-bg-new::after {
+  content: "";
+  position: absolute; right: -80px; top: -80px;
+  width: 280px; height: 280px; border-radius: 50%;
+  background: radial-gradient(circle, rgba(255,255,255,.18), transparent 70%);
+}
+.avatar-new {
+  max-width: 170px; max-height: 170px;
+  border-radius: 50%; border: 4px solid rgba(255,255,255,.9);
+  margin: 0 auto;
+}
+.avatar-new img { border-radius: 50%; width: 100%; height: auto; filter: none !important; }
+.lead-profile { font-size: 1rem; line-height: 1.65; background: #f4f7fb; border-left: 4px solid #2b6cb0; border-radius: 0 12px 12px 0; padding: 1rem 1.2rem; margin-bottom: 0; }
+.profile-infos { background: #fff; border: 1px solid #e6e9ed; border-radius: 12px; padding: .8rem .5rem; margin-left: 0; margin-right: 0; }
+.hero-status {
+  display: inline-flex; align-items: center; gap: .45rem;
+  background: rgba(255,255,255,.14); border: 1px solid rgba(255,255,255,.35);
+  border-radius: 50px; padding: .2rem .8rem; font-size: .8rem;
+}
+.hero-status .dot { width: 8px; height: 8px; border-radius: 50%; background: #48bb78; box-shadow: 0 0 0 4px rgba(72,187,120,.25); }
+.hero-name { font-size: 2.1rem; font-weight: 700; margin-bottom: .15rem; letter-spacing: .5px; font-family: Poppins, sans-serif; }
+.hero-role { font-size: 1rem; opacity: .92; margin-bottom: .5rem; }
+.hero-role .sep { opacity: .6; margin: 0 .3rem; }
+.hero-contact { display: flex; flex-wrap: wrap; gap: .4rem 1rem; font-size: .88rem; opacity: .95; justify-content: center; }
+@media (min-width: 768px) { .hero-contact { justify-content: flex-start; } }
+.hero-contact a { color: #fff; font-weight: 600; }
+.hero-actions { margin-top: .8rem; }
+
+/* === Modernisation CV 2026 : badges, expertises, profil === */
+.cover-bg {
+  background: linear-gradient(135deg, #2b6cb0 0%, #4A89DC 55%, #5a9cf0 100%);
+}
+.hero-badges .badge-hero {
+  display: inline-block;
+  background: rgba(255,255,255,.18);
+  border: 1px solid rgba(255,255,255,.45);
+  color: #fff;
+  border-radius: 50px;
+  padding: .25rem .8rem;
+  font-size: .8rem;
+  margin: .15rem .2rem;
+  backdrop-filter: blur(2px);
+}
+.hero-meta { font-size: .92rem; opacity: .95; }
+.hero-meta a { color: #fff; text-decoration: underline dotted; }
+.btn-cv { font-weight: 600; border-radius: 50px; padding: .5rem 1.4rem; }
+.btn-outline-light-cv {
+  border: 1px solid rgba(255,255,255,.7); color: #fff; border-radius: 50px;
+  padding: .5rem 1.2rem; text-decoration: none;
+}
+.btn-outline-light-cv:hover { background: rgba(255,255,255,.15); color: #fff; }
+
+.profile-highlights .highlight-card {
+  background: #f4f7fb; border: 1px solid #e3eaf3; border-radius: 12px;
+  padding: .9rem 1rem; height: 100%;
+}
+.profile-highlights .highlight-num { font-size: 1.5rem; font-weight: 700; color: #2b6cb0; }
+.profile-highlights .highlight-label { font-size: .85rem; color: #4a5568; }
+
+.expertise-card {
+  background: #fff; border: 1px solid #e6e9ed; border-radius: 12px;
+  padding: 1rem 1.1rem; height: 100%;
+  box-shadow: 0 .125rem .5rem rgba(0,0,0,.05);
+}
+.expertise-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: .5rem; }
+.expertise-card .icon { font-size: 1.4rem; }
+
+.skill-group h3 { font-size: .98rem; font-weight: 700; margin-bottom: .5rem; color: #2d3748; }
+.skill-badges { display: flex; flex-wrap: wrap; gap: .35rem; }
+.skill-badges span {
+  background: #edf2f7; border: 1px solid #d9e2ec; color: #2d3748;
+  border-radius: 50px; padding: .22rem .7rem; font-size: .82rem; font-weight: 500;
+}
+.skill-badges span.hot { background: #ebf4ff; border-color: #90cdf4; color: #2b6cb0; font-weight: 600; }
+.skill-badges span.ia { background: #faf5ff; border-color: #d6bcfa; color: #6b46c1; font-weight: 600; }
+
+.lang-bar { height: 8px; background: #e2e8f0; border-radius: 50px; overflow: hidden; }
+.lang-bar > div { height: 100%; background: #4A89DC; border-radius: 50px; }
+.soft-list li { margin-bottom: .3rem; }
+
+.stack-tags { margin: .5rem 0; display: flex; flex-wrap: wrap; gap: .3rem; }
+.stack-tags span {
+  background: #f0f4f8; border: 1px solid #dfe7ef; font-size: .78rem;
+  border-radius: 6px; padding: .12rem .5rem; color: #334155;
+}
+.cert-label { font-size: .8rem; font-weight: 600; margin-top: .4rem; color: #334155; }
+
+.project-card {
+  background: #fff; border: 1px solid #e6e9ed; border-radius: 12px;
+  padding: 1rem 1.1rem; height: 100%;
+  box-shadow: 0 .125rem .5rem rgba(0,0,0,.05);
+}
+.project-head { display: flex; align-items: baseline; justify-content: space-between; gap: .5rem; margin-bottom: .4rem; }
+.project-card h3 { font-size: 1rem; font-weight: 700; margin: 0; }
+.project-type {
+  font-size: .7rem; font-weight: 600; text-transform: uppercase; letter-spacing: .03em;
+  color: #2b6cb0; background: #ebf4ff; border: 1px solid #90cdf4;
+  border-radius: 50px; padding: .1rem .55rem; white-space: nowrap;
+}
+.project-links { margin-top: .5rem; display: flex; flex-wrap: wrap; gap: .8rem; font-size: .85rem; }
+.project-links a { color: #2b6cb0; font-weight: 600; text-decoration: none; border-bottom: 1px dashed #90cdf4; }
+.project-links a:hover { border-bottom-style: solid; }
+.projects-more { margin-top: .9rem; }
+.projects-more a { color: #2b6cb0; text-decoration: none; border-bottom: 1px dashed #90cdf4; }
+
+.section-title { display: flex; align-items: center; gap: .6rem; }
+.section-title::after { content: ""; flex: 1; height: 1px; background: #e2e8f0; }
+
+/* FIX bar.css casse .row bootstrap : on restaure le flex bootstrap */
+.cover-bg-new .row, .about-section .row, .skills-section .row, .projects-section .row {
+  display: flex; flex-wrap: wrap; margin-right: -12px; margin-left: -12px;
+}
+.cover-bg-new .row > [class*="col-"], .about-section .row > [class*="col-"], .skills-section .row > [class*="col-"], .projects-section .row > [class*="col-"] {
+  padding-right: 12px; padding-left: 12px;
+}
+/* Surcharge finale avatar : annule le -80px de main.css (media 48em) */
+.avatar, .avatar-new { margin-bottom: 0 !important; margin-top: 0 !important; margin-left: auto !important; margin-right: auto !important; }
+@media (min-width: 48em) {
+  .avatar { margin-bottom: 0 !important; margin-left: auto !important; }
+}
+@media print {
+  .hero-badges .badge-hero { border-color: #999; color: #000; background: none; }
+  .expertise-card, .profile-highlights .highlight-card, .project-card { box-shadow: none !important; break-inside: avoid; }
+  .skill-badges span { border-color: #999; }
+  .project-type { border-color: #999; color: #000; background: none; }
+  .timeline-card { break-inside: avoid; }
+}
+
 footer a:not(.nav-link) {
   color: inherit;
   border-bottom: 1px dashed;
   text-decoration: none;
   cursor: pointer; }
 
+/* L'ancien theme forçait margin-bottom:-80px (avatar qui chevauche la section Profil) : supprimé volontairement. */
 @media (min-width: 48em) {
   .site-title {
     float: left; }
   .site-nav {
-    float: right; }
-  .avatar {
-    margin-bottom: -80px;
-    margin-left: 0; } }
+    float: right; } }
